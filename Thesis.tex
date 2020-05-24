@@ -1,0 +1,40 @@
+\documentclass[11pt, openright]{book}
+
+\usepackage{thesis}
+\graphicspath{{figs/}}
+
+\begin{document} 
+\frontmatter
+
+\include{front/titlepage}
+\thispagestyle{empty}
+\include{front/committee}
+\setcounter{page}{1}
+\include{front/abstract}
+
+% \newpage\null\thispagestyle{empty}
+
+\renewcommand{\contentsname}{Contents}
+\microtypesetup{protrusion=false} % disables protrusion locally in the document
+\thispagestyle{empty}
+\tableofcontents % prints Table of Contents
+\microtypesetup{protrusion=true} % enables protrusion
+
+\mainmatter
+
+%ADD NEWPAGE WHENEVER PREVIOUS CHAPTER FINISHES ON LEFT SIDE (THE EASIEST WORK AROUND)
+% \newpage\null\thispagestyle{empty}\newpage
+
+\include{chapters/Introduction}
+\include{chapters/Chapter1}
+
+\backmatter
+
+\include{back/conclusion}
+\include{back/publications}
+\include{back/acknowledgements}
+
+\newpage\null\thispagestyle{empty}\newpage
+\addcontentsline{toc}{chapter}{Bibliography}
+\printbibliography[notcategory=fullcited]
+\end{document}

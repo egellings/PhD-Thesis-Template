@@ -1,0 +1,16 @@
+\chapter[Shorter Title for ToC and header]{Very long chapter title\\spanning over two lines}
+\label{ch:chapter1}
+
+\begin{abstract} %add chapter abstract
+\blindtext
+\end{abstract}
+
+\begin{basedon}%add citations (won't be numbered in bibliograpy)
+\item \fullcite{mypublication1}.\mybibexclude{mypublication1}
+\item \fullcite{mypublication2}.\mybibexclude{mypublication2}
+\end{basedon}
+
+\newpage %Start chapter after new page
+These citation will appear in the bibliography\cite{einstein1905, latexcompanion1993, mypublication2}
+
+\blindmathpaper

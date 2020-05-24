@@ -1,0 +1,90 @@
+\RequirePackage{fix-cm}%scalable cm
+
+\usepackage{blindtext}
+
+\usepackage{geometry}
+\geometry{
+    paper=b5paper,
+	headheight=13.6pt,
+	%http://www.bestbookprinting.com/app/webroot/blog/?p=1459
+	% inner=.75in,        % Inner margin
+    % outer=1in,          % Outer margin
+    top=1in,            % Top margin
+    bottom=.875in,      % Bottom margin	
+	textwidth=350pt,	% Alternative to inner/outer: Should result in 40-80 characters per line: https://en.wikipedia.org/wiki/Line_length
+	}%
+	
+% FONTs AND 
+\usepackage{libertine} % Standard font
+\usepackage[libertine]{newtxmath} %Font for math
+\usepackage[T1]{fontenc} 
+\usepackage[stretch=10,shrink=10]{microtype}% improve spacing, etc of text 
+\usepackage[all]{nowidow} %avoid one-liners at beginning and end of page
+
+% Change size of subscript and superscript (needs to be adopted if font size of main document is changed)
+\DeclareMathSizes
+   {10.95}% Specification of math fonts for this size of surrounding text
+   {11.3}% size of \displaystyle and \textstyle 
+   {7}% size of \scriptstyle
+   {7}% size of \scriptscriptstyle
+
+% HYPHENATION
+\usepackage[english]{babel}
+\hyphenation{hy-phen-a-tion} %add your own hyphenations!
+
+% Deal with floats (figures, tables,...)
+\renewcommand{\floatpagefraction}{.8} % If float is taller on page than fraction given here, LaTeX will place it on a separate page
+\usepackage[section]{placeins} % All floats appear within the correct section
+
+%bibliography style
+\usepackage{biblatex}
+\addbibresource{thesis.bib}
+%fullcited publications (like own papers) are not numbered in bibliography
+\DeclareBibliographyCategory{fullcited}
+\newcommand{\mybibexclude}[1]{\addtocategory{fullcited}{#1}}
+
+
+%CHAPTER TITLE
+\usepackage{graphicx,xcolor} 
+\usepackage{titlesec}
+\definecolor{gray75}{gray}{0.75}
+\newcommand{\hsp}{\hspace{10pt}}
+ \titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries} 
+ \titlespacing*{name=\chapter,numberless}{0pt}{-30pt}{\baselineskip} %Frontmatter and backmatter chapters start on top of page
+
+% References with links
+\usepackage[hidelinks]{hyperref}
+
+%change caption style
+\usepackage[font=footnotesize,labelfont={bf,sf},textfont={sf}]{caption}%,width=.9\textwidth
+
+% Redefine the format of the abstract at the beginning of each chapter
+\newenvironment{abstract}{\rightskip1in\slshape}{}
+\newenvironment{basedon}{\vspace*{\fill}\textbf{This chapter is based on:}\begin{itemize}}{\end{itemize}\clearpage}
+
+%no indentations
+\usepackage{parskip}
+\setlength\parindent{0pt}
+\setlength\parskip{.4\baselineskip}%
+
+
+% All this is for the headers
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\usepackage{emptypage} % Remove headers from empty pages
+\renewcommand{\chaptermark}[1]{%
+\markboth{\thechapter.\ #1}{}}
+\fancyhead[RE,CE]{}
+\fancyhead[LO,CO]{}
+\fancyhead[LE]{\nouppercase \leftmark}
+\fancyhead[RO]{\nouppercase \rightmark}
+\fancyfoot{}
+\fancyfoot[LE,RO]{\thepage}
+\fancypagestyle{plain}{%
+  \fancyhf{}                          % clear all header and footer fields
+  \fancyfoot[LE,RO]{\thepage}		  % add page number to first page of chapter
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+\endinput
